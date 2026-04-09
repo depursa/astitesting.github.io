@@ -1,0 +1,106 @@
+{
+  "company": {
+    "name": "PT. Angkasa Trikarya Indonesia",
+    "reg_number": "1367747",
+    "address": "Jl. P.M Noor, Perum Grand Tsamara No. 16, Samarinda, Kalimantan Timur, Indonesia",
+    "phone": "+62 812-3456-7890",
+    "email": "info@angkasatrikarya.co.id"
+  },
+  "hero": {
+    "headline": "Solusi Konsultan K3 Profesional dan Terpercaya",
+    "subheadline": "Mitra strategis dalam inspeksi, pengujian, dan sertifikasi keselamatan kerja sesuai regulasi nasional.",
+    "stats": [
+      { "value": "500+", "label": "Alat Terinspeksi" },
+      { "value": "50+", "label": "Klien Industri" },
+      { "value": "100%", "label": "Akurasi Sertifikasi" },
+      { "value": "24/7", "label": "Dukungan Teknis" }
+    ]
+  },
+  "services": [
+    {
+      "id": "papa-paa",
+      "title": "PAPA / PAA",
+      "description": "Pesawat Angkat dan Pesawat Angkut. Inspeksi menyeluruh untuk crane, forklift, dan alat berat lainnya.",
+      "detail": "Pengujian beban (load test), pemeriksaan visual struktur, dan verifikasi fungsi safety device untuk memastikan kelayakan operasi sesuai Permenaker No. 8 Tahun 2020.",
+      "icon": "container"
+    },
+    {
+      "id": "pubt",
+      "title": "PUBT",
+      "description": "Pesawat Uap dan Bejana Tekan. Pengujian ketahanan dan keamanan tekanan tinggi.",
+      "detail": "Pemeriksaan ketebalan dinding (thickness test), safety valve, dan hydrotest pada boiler, tangki timbun, dan bejana tekan lainnya sesuai standar ASME dan regulasi Depnaker.",
+      "icon": "gauge"
+    },
+    {
+      "id": "fire-security",
+      "title": "Fire Security",
+      "description": "Inspeksi sistem proteksi kebakaran aktif dan pasif.",
+      "detail": "Audit sistem hydrant, sprinkler, fire alarm, dan APAR untuk memastikan kesiapan fasilitas dalam mitigasi risiko kebakaran industri.",
+      "icon": "flame"
+    },
+    {
+      "id": "elevator",
+      "title": "Elevator / Eskalator",
+      "description": "Riksa uji kelayakan sarana transportasi vertikal gedung.",
+      "detail": "Pemeriksaan sistem governor, wire rope, buffer, dan interlock pintu pada lift penumpang, lift barang, dan eskalator demi keamanan publik.",
+      "icon": "arrow-up-down"
+    },
+    {
+      "id": "electric",
+      "title": "Instalasi Listrik & Petir",
+      "description": "Audit keselamatan kelistrikan dan proteksi sambaran petir.",
+      "detail": "Pengukuran tahanan isolasi, thermography, dan pemeriksaan sistem penangkal petir (konvensional/elektrostatis) untuk mencegah korsleting dan kerusakan akibat surja.",
+      "icon": "zap"
+    },
+    {
+      "id": "grounding",
+      "title": "Grounding System",
+      "description": "Pengukuran resistansi pembumian untuk stabilitas sistem.",
+      "detail": "Verifikasi nilai tahanan grounding di bawah 5 Ohm untuk perlindungan peralatan elektronik sensitif dan keselamatan personal dari tegangan sentuh.",
+      "icon": "anchor"
+    },
+    {
+      "id": "ptp",
+      "title": "PTP",
+      "description": "Pesawat Tenaga dan Produksi. Inspeksi mesin-mesin produksi.",
+      "detail": "Pemeriksaan pada genset, turbin, mesin perkakas, dan tanur untuk menjamin efisiensi kinerja dan keamanan operator di lantai produksi.",
+      "icon": "settings"
+    }
+  ],
+  "projects": [
+    {
+      "title": "Inspeksi Boiler PLTU",
+      "category": "Power Plant",
+      "desc": "Riksa uji berkala PUBT kapasitas tinggi."
+    },
+    {
+      "title": "Sertifikasi Crane Pelabuhan",
+      "category": "Logistik & Maritim",
+      "desc": "General Overhaul check dan load testing."
+    },
+    {
+      "title": "Audit Kelistrikan Mall",
+      "category": "Komersial",
+      "desc": "Pemeriksaan total instalasi listrik gedung bertingkat."
+    },
+     {
+      "title": "Inspeksi Safety Tambang Batubara",
+      "category": "Pertambangan",
+      "desc": "Verifikasi unit alat berat operasional tambang."
+    }
+  ],
+  "faq": [
+    {
+      "q": "Berapa lama proses inspeksi hingga sertifikat terbit?",
+      "a": "Proses inspeksi lapangan memakan waktu 1-3 hari tergantung jumlah alat. Penerbitan Surat Keterangan Layak K3 biasanya memakan waktu 7-14 hari kerja setelah laporan teknis disetujui."
+    },
+    {
+      "q": "Apakah sertifikasi ini resmi diakui Disnaker/Kemenaker?",
+      "a": "Ya, PT. Angkasa Trikarya Indonesia adalah PJK3 (Perusahaan Jasa K3) resmi yang ditunjuk untuk membantu proses riksa uji yang hasilnya diakui secara nasional."
+    },
+    {
+      "q": "Dokumen apa saja yang perlu disiapkan sebelum inspeksi?",
+      "a": "Umumnya meliputi manual book alat, log sheet maintenance, riwayat sertifikasi sebelumnya (jika ada), dan layout instalasi."
+    }
+  ]
+}

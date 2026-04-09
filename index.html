@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="PT. Angkasa Trikarya Indonesia - Konsultan K3 Terpercaya di Kalimantan Timur. Melayani inspeksi Pesawat Angkat dan Pesawat Angkut, Bejana Tekan, Listrik, Elevator, dan Sertifikasi K3 Resmi.">
+    <meta name="keywords" content="Konsultan K3 Samarinda, Jasa Inspeksi K3, Sertifikasi K3, Inspeksi Crane, Inspeksi Boiler, PJK3 Kalimantan, PT ASTI">
+    <meta name="author" content="PT. Angkasa Trikarya Indonesia">
+    <meta name="theme-color" content="#0f172a">
+    <title>PT. Angkasa Trikarya Indonesia | PJK3 & Inspeksi Teknik</title>
+    
+    <!-- Preconnect untuk performa -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdn.tailwindcss.com">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        slate: {
+                            850: '#151e2e',
+                            900: '#0f172a',
+                        },
+                        blue: {
+                            950: '#0f172a',
+                        }
+                    },
+                    boxShadow: {
+                        'glass': '0 8px 32px 0 rgba(31, 38, 135, 0.07)',
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+    
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased overflow-x-hidden selection:bg-orange-500 selection:text-white">
+
+    <!-- Skip to main content -->
+    <a href="#main-content" class="sr-only focus:not-sr-only">Lewati ke konten utama</a>
+
+    <!-- Navbar -->
+    <nav class="fixed w-full z-50 transition-all duration-300 bg-white/80 backdrop-blur-lg border-b border-slate-200/50" id="navbar" role="navigation" aria-label="Main Navigation">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center gap-3 cursor-pointer" onclick="window.scrollTo(0,0)" role="button" tabindex="0">
+                    <div class="bg-white-to-br from-slate-900 to-slate-800 text-white p-2 rounded-lg shadow-lg shadow-blue-900/20">
+                        <img src="image/Logo.png" onerror="this.style.display='none';this.parentElement.innerHTML='<span class=\'font-bold px-1\'>ASTI</span>'" alt="Logo PT. ASTI" class="w-10 h-10 object-contain">
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="font-bold text-base sm:text-lg leading-tight text-slate-900 tracking-tight">PT. ANGKASA TRIKARYA</span>
+                        <span class="text-[8px] sm:text-[10px] uppercase tracking-wider text-slate-500 font-medium hidden sm:block">Jasa Inspeksi Teknik K3</span>
+                    </div>
+                </div>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden lg:flex space-x-1 items-center bg-slate-100/50 p-1 rounded-full border border-slate-200/50">
+                    <a href="#home" class="nav-link px-4 py-2 text-sm font-medium text-slate-600 rounded-full hover:bg-white hover:text-blue-700 hover:shadow-sm transition-all">Home</a>
+                    <a href="#about" class="nav-link px-4 py-2 text-sm font-medium text-slate-600 rounded-full hover:bg-white hover:text-blue-700 hover:shadow-sm transition-all">Tentang</a>
+                    <a href="#services" class="nav-link px-4 py-2 text-sm font-medium text-slate-600 rounded-full hover:bg-white hover:text-blue-700 hover:shadow-sm transition-all">Layanan</a>
+                    <a href="#flow" class="nav-link px-4 py-2 text-sm font-medium text-slate-600 rounded-full hover:bg-white hover:text-blue-700 hover:shadow-sm transition-all">Alur</a>
+                </div>
+
+                <!-- CTA Button Desktop -->
+                <div class="hidden lg:block">
+                    <a href="#contact" class="group bg-slate-900 hover:bg-orange-600 text-white px-5 py-2.5 rounded-lg font-medium transition-all shadow-lg shadow-slate-900/20 hover:shadow-orange-500/30 text-sm flex items-center gap-2">
+                        <span>Hubungi Kami</span>
+                        <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="lg:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="p-2 text-slate-600 hover:text-blue-900 hover:bg-slate-100 rounded-lg transition-colors focus:outline-none" aria-label="Toggle mobile menu" aria-expanded="false">
+                        <i data-lucide="menu" class="w-6 h-6"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+                
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="fixed inset-0 z-40 bg-slate-900/20 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300 lg:hidden">
+            <div class="absolute top-20 left-0 w-full bg-white border-b border-slate-200 shadow-xl transform transition-transform duration-300" id="mobile-menu-content">
+                <div class="px-4 py-6 space-y-2">
+                    <a href="#home" class="mobile-link block px-4 py-3 text-slate-600 hover:bg-slate-50 hover:text-blue-700 rounded-xl font-medium border border-transparent hover:border-slate-100 transition-all">Home</a>
+                    <a href="#about" class="mobile-link block px-4 py-3 text-slate-600 hover:bg-slate-50 hover:text-blue-700 rounded-xl font-medium border border-transparent hover:border-slate-100 transition-all">Tentang Kami</a>
+                    <a href="#services" class="mobile-link block px-4 py-3 text-slate-600 hover:bg-slate-50 hover:text-blue-700 rounded-xl font-medium border border-transparent hover:border-slate-100 transition-all">Layanan</a>
+                    <a href="#flow" class="mobile-link block px-4 py-3 text-slate-600 hover:bg-slate-50 hover:text-blue-700 rounded-xl font-medium border border-transparent hover:border-slate-100 transition-all">Alur Sertifikasi</a>
+                    <a href="#contact" class="mobile-link block px-4 py-3 mt-4 text-center bg-orange-500 text-white rounded-xl font-bold shadow-lg shadow-orange-500/20">Hubungi Kami</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main id="main-content">
+        <!-- Hero Section -->
+        <section id="home" class="relative min-h-[90vh] flex items-center pt-20 overflow-hidden bg-slate-900" role="region" aria-label="Hero section">
+            <!-- Background -->
+            <div class="absolute inset-0 z-0">
+                <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1581092921461-eab62e97a780?q=80&w=2070&auto=format&fit=crop')] bg-cover bg-center opacity-20 scale-105 animate-slow-zoom"></div>
+                <div class="absolute inset-0 bg-gradient-to-b from-slate-900/90 via-slate-900/80 to-slate-900"></div>
+                <div class="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:40px_40px] opacity-20"></div>
+            </div>
+            
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full py-12 md:py-20">
+                <div class="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+                    <!-- Text Content -->
+                    <div class="max-w-3xl">
+                        <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-300 text-xs font-semibold tracking-wide mb-6 sm:mb-8 animate-fade-in backdrop-blur-sm">
+                            <span class="relative flex h-2 w-2">
+                                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-400 opacity-75"></span>
+                                <span class="relative inline-flex rounded-full h-2 w-2 bg-orange-500"></span>
+                            </span>
+                            PJK3 BIDANG PEMERIKSAAN DAN PENGUJIAN TEKNIK K3
+                        </div>
+                        
+                        <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6 sm:mb-8 tracking-tight">
+                            Mitra Inspeksi <br>
+                            <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-200">Teknik K3</span>
+                            <span class="block text-lg sm:text-2xl md:text-3xl mt-3 font-normal text-slate-400">Profesional & Akurat</span>
+                        </h1>
+                        
+                        <p class="text-sm sm:text-base md:text-lg text-slate-300 mb-8 sm:mb-10 max-w-xl leading-relaxed border-l-2 border-orange-500 pl-4 sm:pl-6">
+                            "Your Safety Is Our Priority". Kami memastikan kepatuhan regulasi nasional untuk melindungi aset dan tenaga kerja Anda dengan prosedur berstandar.
+                        </p>
+                        
+                        <div class="flex flex-col sm:flex-row gap-4 animate-fade-up">
+                            <a href="#contact" class="px-6 sm:px-8 py-3 sm:py-4 bg-orange-600 hover:bg-orange-700 text-white font-semibold rounded-xl shadow-xl shadow-orange-600/20 transition-all text-center flex items-center justify-center gap-2 group transform hover:-translate-y-1">
+                                Ajukan Permohonan
+                                <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+                            </a>
+                            <a href="#services" class="px-6 sm:px-8 py-3 sm:py-4 bg-white/5 hover:bg-white/10 text-white border border-white/10 font-semibold rounded-xl backdrop-blur-sm transition-all text-center flex items-center justify-center gap-2 hover:border-white/30">
+                                <i data-lucide="search" class="w-4 h-4"></i>
+                                Lihat Layanan
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Stats Card -->
+                    <div class="hidden lg:block relative">
+                        <div class="absolute inset-0 bg-gradient-to-r from-blue-600 to-orange-600 rounded-2xl opacity-20 blur-2xl animate-pulse-slow"></div>
+                        <div class="relative bg-slate-800/50 backdrop-blur-md border border-slate-700/50 p-6 sm:p-8 rounded-2xl">
+                            <div id="stats-container" class="grid grid-cols-2 gap-6 sm:gap-8"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Mobile Stats -->
+                <div id="mobile-stats-container" class="lg:hidden mt-12 sm:mt-16 grid grid-cols-2 gap-3 sm:gap-4 border-t border-slate-800 pt-8"></div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="py-16 sm:py-24 bg-white relative overflow-hidden" role="region" aria-label="About section">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
+                    <!-- Image -->
+                    <div class="relative order-2 lg:order-1 group flex justify-center items-center">
+                        <div class="absolute -top-10 left-0 right-0 mx-auto w-40 h-40 bg-orange-100 rounded-full blur-3xl mix-blend-multiply opacity-70"></div>
+                        <div class="absolute -bottom-10 right-0 left-0 mx-auto w-40 h-40 bg-blue-100 rounded-full blur-3xl mix-blend-multiply opacity-70"></div>
+                        <div class="relative rounded-2xl overflow-hidden shadow-2xl max-w-full">
+                            <img src="https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?q=80&w=2070&auto=format&fit=crop" alt="Tim Engineer Inspeksi K3 Profesional" class="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                            <div class="absolute bottom-4 sm:bottom-6 left-4 sm:left-6 text-white">
+                                <p class="font-bold text-base sm:text-lg">Experienced Engineers</p>
+                                <p class="text-xs sm:text-sm opacity-80">Certified & Professional Team</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Content -->
+                    <div class="order-1 lg:order-2">
+                        <div class="flex items-center gap-2 mb-4">
+                            <span class="h-px w-8 bg-orange-500"></span>
+                            <span class="text-xs sm:text-sm font-bold text-orange-600 uppercase tracking-widest">Tentang PT. ASTI</span>
+                        </div>
+                        <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-slate-900 mb-4 sm:mb-6 leading-tight">Integritas dalam <br> Pengujian Teknis</h2>
+                        <p class="text-slate-600 mb-6 sm:mb-8 leading-relaxed text-sm sm:text-base">
+                            PT. Angkasa Trikarya Indonesia (ASTI) adalah Perusahaan Jasa Keselamatan dan Kesehatan Kerja (PJK3) yang berbasis di Samarinda dan melayani kebutuhan inspeksi di seluruh Indonesia. Kami berkomitmen memberikan layanan yang profesional, akurat, dan sesuai regulasi.
+                        </p>
+                        
+                        <div class="grid sm:grid-cols-2 gap-4 sm:gap-6 mb-8 sm:mb-10">
+                            <div class="p-4 rounded-xl bg-slate-50 border border-slate-100 hover:border-blue-200 transition-colors">
+                                <div class="w-10 h-10 rounded-lg bg-blue-100 text-blue-600 flex items-center justify-center mb-3">
+                                    <i data-lucide="target" class="w-5 h-5"></i>
+                                </div>
+                                <h4 class="font-bold text-slate-900 mb-1 text-sm sm:text-base">Visi</h4>
+                                <p class="text-xs sm:text-sm text-slate-600 leading-snug">Menjadi Perusahaan yang Amanah, Terdepan dan Berintegritas.</p>
+                            </div>
+                            <div class="p-4 rounded-xl bg-slate-50 border border-slate-100 hover:border-orange-200 transition-colors">
+                                <div class="w-10 h-10 rounded-lg bg-orange-100 text-orange-600 flex items-center justify-center mb-3">
+                                    <i data-lucide="award" class="w-5 h-5"></i>
+                                </div>
+                                <h4 class="font-bold text-slate-900 mb-2 text-sm sm:text-base">Misi</h4>
+                                <ol class="text-xs sm:text-sm text-slate-600 leading-snug list-decimal pl-4 space-y-1">
+                                    <li>Memberikan produk berkualitas dengan harga kompetitif dan membina hubungan baik dengan mitra secara berkelanjutan.</li>
+                                    <li>Membantu klien dalam pemeriksaan, pengujian, serta sertifikasi kelayakan peralatan K3 dengan mengedepankan profesionalisme.</li>
+                                    <li>Ikut menjadi bagian dalam pembangunan tempat kerja yang aman, sehat, efisien, dan produktif guna mendukung keberlangsungan usaha.</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Download Button -->
+                <div class="flex justify-center mt-8 sm:mt-12">
+                    <a href="pdf/NEW 2026 COMPANY PROFILE ASTI .pdf" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-6 py-3 bg-slate-900 text-white rounded-full hover:bg-slate-800 transition-all font-medium text-sm shadow-lg hover:shadow-xl hover:-translate-y-0.5">
+                        <i data-lucide="file-text" class="w-4 h-4"></i>
+                        Download Company Profile
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services" class="py-16 sm:py-24 bg-slate-50 relative" role="region" aria-label="Services section">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <!-- Header -->
+                <div class="text-center mb-12 sm:mb-16 max-w-2xl mx-auto">
+                    <span class="text-xs font-bold text-orange-600 uppercase tracking-widest bg-orange-100 px-3 py-1 rounded-full inline-block">Layanan Kami</span>
+                    <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-slate-900 mt-3 sm:mt-4 mb-2 sm:mb-4">Inspeksi & Sertifikasi</h2>
+                    <p class="text-slate-600 text-sm sm:text-base">Layanan teknis berbasis regulasi untuk berbagai sektor industri, dari pertambangan hingga gedung komersial.</p>
+                </div>
+
+                <!-- Carousel -->
+                <div class="mb-12 sm:mb-16 relative">
+                    <div class="swiper projects-carousel w-full">
+                        <div class="swiper-wrapper">
+                            <!-- PAA Slide -->
+                            <div class="swiper-slide">
+                                <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all border border-slate-100 group flex flex-col h-full">
+                                    <div class="relative h-48 sm:h-64 overflow-hidden bg-slate-200 flex-shrink-0">
+                                        <img src="image/DOKUMENTASI PEKERJAAN/PAA.jpg" alt="Inspeksi Pesawat Angkat dan Angkut" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" onerror="this.src='https://via.placeholder.com/500x260/0f172a/ffffff?text=Inspeksi+PAA'">
+                                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4 sm:p-6">
+                                            <span class="text-white font-medium text-xs sm:text-sm">Lihat Detail</span>
+                                        </div>
+                                    </div>
+                                    <div class="p-4 sm:p-6">
+                                        <div class="w-10 h-10 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center mb-3 sm:mb-4 flex-shrink-0">
+                                            <i data-lucide="truck" class="w-5 h-5"></i>
+                                        </div>
+                                        <h4 class="font-bold text-slate-900 mb-1 sm:mb-2 text-base sm:text-lg">Inspeksi Pesawat Angkat dan Angkut</h4>
+                                        <p class="text-xs sm:text-sm text-slate-600">Pengujian visual dan fungsi pada unit Pesawat angkat dan Angkut.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Elevator Slide -->
+                            <div class="swiper-slide">
+                                <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all border border-slate-100 group flex flex-col h-full">
+                                    <div class="relative h-48 sm:h-64 overflow-hidden bg-slate-200 flex-shrink-0">
+                                        <img src="image/DOKUMENTASI PEKERJAAN/ELEVATOR.jpg" alt="Inspeksi Elevator" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" onerror="this.src='https://via.placeholder.com/500x260/0f172a/ffffff?text=Inspeksi+Elevator'">
+                                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4 sm:p-6">
+                                            <span class="text-white font-medium text-xs sm:text-sm">Lihat Detail</span>
+                                        </div>
+                                    </div>
+                                    <div class="p-4 sm:p-6">
+                                        <div class="w-10 h-10 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center mb-3 sm:mb-4 flex-shrink-0">
+                                            <i data-lucide="arrow-up-down" class="w-5 h-5"></i>
+                                        </div>
+                                        <h4 class="font-bold text-slate-900 mb-1 sm:mb-2 text-base sm:text-lg">Inspeksi Elevator</h4>
+                                        <p class="text-xs sm:text-sm text-slate-600">Uji keselamatan dan fungsi elevator gedung komersial dan mall.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- PUBT Slide -->
+                            <div class="swiper-slide">
+                                <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all border border-slate-100 group flex flex-col h-full">
+                                    <div class="relative h-48 sm:h-64 overflow-hidden bg-slate-200 flex-shrink-0">
+                                        <img src="image/DOKUMENTASI PEKERJAAN/PUBT.jpg" alt="Inspeksi Bejana Tekan" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" onerror="this.src='https://via.placeholder.com/500x260/0f172a/ffffff?text=Inspeksi+Boiler'">
+                                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4 sm:p-6">
+                                            <span class="text-white font-medium text-xs sm:text-sm">Lihat Detail</span>
+                                        </div>
+                                    </div>
+                                    <div class="p-4 sm:p-6">
+                                        <div class="w-10 h-10 rounded-full bg-orange-50 text-orange-600 flex items-center justify-center mb-3 sm:mb-4 flex-shrink-0">
+                                            <i data-lucide="flame" class="w-5 h-5"></i>
+                                        </div>
+                                        <h4 class="font-bold text-slate-900 mb-1 sm:mb-2 text-base sm:text-lg">Pesawat Uap & Bejana Tekan</h4>
+                                        <p class="text-xs sm:text-sm text-slate-600">Pengujian tekanan dan keamanan sistem pemanas industri.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Listrik Slide -->
+                            <div class="swiper-slide">
+                                <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all border border-slate-100 group flex flex-col h-full">
+                                    <div class="relative h-48 sm:h-64 overflow-hidden bg-slate-200 flex-shrink-0">
+                                        <img src="image/DOKUMENTASI PEKERJAAN/LISTRIK.jpg" alt="Instalasi Listrik" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" onerror="this.src='https://via.placeholder.com/500x260/0f172a/ffffff?text=Instalasi+Listrik'">
+                                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4 sm:p-6">
+                                            <span class="text-white font-medium text-xs sm:text-sm">Lihat Detail</span>
+                                        </div>
+                                    </div>
+                                    <div class="p-4 sm:p-6">
+                                        <div class="w-10 h-10 rounded-full bg-yellow-50 text-yellow-600 flex items-center justify-center mb-3 sm:mb-4 flex-shrink-0">
+                                            <i data-lucide="zap" class="w-5 h-5"></i>
+                                        </div>
+                                        <h4 class="font-bold text-slate-900 mb-1 sm:mb-2 text-base sm:text-lg">Instalasi Listrik</h4>
+                                        <p class="text-xs sm:text-sm text-slate-600">Verifikasi sistem kelistrikan, grounding, dan penyalur petir.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Fire Slide -->
+                            <div class="swiper-slide">
+                                <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all border border-slate-100 group flex flex-col h-full">
+                                    <div class="relative h-48 sm:h-64 overflow-hidden bg-slate-200 flex-shrink-0">
+                                        <img src="image/fire.jpeg" alt="Proteksi Kebakaran" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" onerror="this.src='https://via.placeholder.com/500x260/0f172a/ffffff?text=Proteksi+Kebakaran'">
+                                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4 sm:p-6">
+                                            <span class="text-white font-medium text-xs sm:text-sm">Lihat Detail</span>
+                                        </div>
+                                    </div>
+                                    <div class="p-4 sm:p-6">
+                                        <div class="w-10 h-10 rounded-full bg-red-50 text-red-600 flex items-center justify-center mb-3 sm:mb-4 flex-shrink-0">
+                                            <i data-lucide="bell" class="w-5 h-5"></i>
+                                        </div>
+                                        <h4 class="font-bold text-slate-900 mb-1 sm:mb-2 text-base sm:text-lg">Proteksi Kebakaran</h4>
+                                        <p class="text-xs sm:text-sm text-slate-600">Audit sistem fire alarm, hydrant, dan sprinkler gedung.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Pagination -->
+                        <div class="swiper-pagination-services mt-6 sm:mt-8"></div>
+                    </div>
+                </div>
+
+                <!-- Services Grid -->
+                <div>
+                    <h3 class="text-xl sm:text-2xl font-bold text-slate-900 mb-6 sm:mb-8 text-center">Layanan Lengkap Kami</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6" id="services-grid"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Procurement Section -->
+        <section class="py-16 sm:py-24 bg-white" role="region" aria-label="Procurement section">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="bg-slate-900 rounded-2xl sm:rounded-[2.5rem] p-6 sm:p-8 md:p-16 relative overflow-hidden text-white shadow-2xl shadow-slate-900/20">
+                    <!-- Decorative -->
+                    <div class="absolute top-0 right-0 w-60 h-60 bg-blue-600 rounded-full blur-[100px] opacity-25 pointer-events-none"></div>
+                    <div class="absolute bottom-0 left-0 w-60 h-60 bg-orange-600 rounded-full blur-[100px] opacity-15 pointer-events-none"></div>
+                    
+                    <div class="relative z-10 grid lg:grid-cols-2 gap-8 lg:gap-20 items-center">
+                        <!-- Content -->
+                        <div>
+                            <div class="inline-block bg-white/10 backdrop-blur-md px-4 py-1.5 rounded-full text-xs sm:text-sm font-medium text-orange-300 mb-4 sm:mb-6 border border-white/5">
+                                Layanan Pengadaan
+                            </div>
+                            <h3 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 sm:mb-6 leading-tight">Solusi Peralatan <br> <span class="text-blue-300">Safety & Produksi</span></h3>
+                            <p class="text-slate-300 mb-6 sm:mb-10 leading-relaxed text-sm sm:text-base">
+                                PT. ASTI menyediakan peralatan keselamatan kerja (K3) berkualitas tinggi dan peralatan produksi untuk mendukung operasional industri maupun UMKM.
+                            </p>
+                            
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
+                                <div class="flex items-center gap-3 sm:gap-4 bg-slate-800/50 p-3 sm:p-4 rounded-xl border border-slate-700/50 hover:bg-slate-800 transition-colors">
+                                    <div class="bg-orange-500/20 p-2 rounded-lg flex-shrink-0">
+                                        <i data-lucide="fire-extinguisher" class="text-orange-400 w-4 h-4 sm:w-5 sm:h-5"></i>
+                                    </div>
+                                    <span class="text-xs sm:text-sm font-medium text-slate-200">Tabung & Refill APAR</span>
+                                </div>
+                                <div class="flex items-center gap-3 sm:gap-4 bg-slate-800/50 p-3 sm:p-4 rounded-xl border border-slate-700/50 hover:bg-slate-800 transition-colors">
+                                    <div class="bg-blue-500/20 p-2 rounded-lg flex-shrink-0">
+                                        <i data-lucide="hard-hat" class="text-blue-400 w-4 h-4 sm:w-5 sm:h-5"></i>
+                                    </div>
+                                    <span class="text-xs sm:text-sm font-medium text-slate-200">Alat Pelindung Diri</span>
+                                </div>
+                                <div class="flex items-center gap-3 sm:gap-4 bg-slate-800/50 p-3 sm:p-4 rounded-xl border border-slate-700/50 hover:bg-slate-800 transition-colors">
+                                    <div class="bg-red-500/20 p-2 rounded-lg flex-shrink-0">
+                                        <i data-lucide="shield" class="text-red-400 w-4 h-4 sm:w-5 sm:h-5"></i>
+                                    </div>
+                                    <span class="text-xs sm:text-sm font-medium text-slate-200">Proteksi Kebakaran</span>
+                                </div>
+                                <div class="flex items-center gap-3 sm:gap-4 bg-slate-800/50 p-3 sm:p-4 rounded-xl border border-slate-700/50 hover:bg-slate-800 transition-colors">
+                                    <div class="bg-green-500/20 p-2 rounded-lg flex-shrink-0">
+                                        <i data-lucide="wrench" class="text-green-400 w-4 h-4 sm:w-5 sm:h-5"></i>
+                                    </div>
+                                    <span class="text-xs sm:text-sm font-medium text-slate-200">Peralatan UMKM</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Image -->
+                        <div class="relative flex items-center justify-center order-first lg:order-last">
+                            <img src="/astiweb/image/Jenis-Jenis-Apar.png" alt="Peralatan Keselamatan K3" class="rounded-2xl shadow-2xl border-4 border-slate-800 w-full object-cover h-64 sm:h-[400px]" onerror="this.src='https://via.placeholder.com/600x400/0f172a/ffffff?text=Equipment'">
+                            <!-- Badge -->
+                            <div class="absolute bottom-3 sm:bottom-4 left-3 sm:left-4 bg-slate-800/80 backdrop-blur text-slate-100 p-3 sm:p-4 rounded-xl shadow-xl hidden sm:block">
+                                <div class="flex items-center gap-2 sm:gap-3">
+                                    <div class="bg-green-100/20 p-1.5 sm:p-2 rounded-full text-green-400">
+                                        <i data-lucide="check-circle" class="w-4 h-4 sm:w-5 sm:h-5"></i>
+                                    </div>
+                                    <div>
+                                        <p class="text-xs font-bold uppercase">Kualitas</p>
+                                        <p class="font-bold text-sm">Standar K3</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Flow Section -->
+        <section id="flow" class="py-16 sm:py-24 bg-slate-50" role="region" aria-label="Certification flow section">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <!-- Header -->
+                <div class="text-center mb-12 sm:mb-16">
+                    <span class="text-xs font-bold text-blue-600 uppercase tracking-widest bg-blue-50 px-3 py-1 rounded-full inline-block">Proses Kerja</span>
+                    <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-slate-900 mt-3 sm:mt-4">Alur Sertifikasi</h2>
+                </div>
+                
+                <!-- Flow Steps -->
+                <div class="relative">
+                    <div class="hidden lg:block absolute top-10 left-0 w-full h-0.5 bg-slate-200 -z-10"></div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 sm:gap-6 md:gap-8">
+                        <!-- Step 01 -->
+                        <div class="group relative bg-white p-4 sm:p-6 rounded-2xl shadow-sm border border-slate-100 hover:shadow-lg transition-all duration-300 flex flex-col items-center">
+                            <div class="w-16 sm:w-20 h-16 sm:h-20 bg-white border-4 border-blue-50 rounded-full flex items-center justify-center mb-3 sm:mb-6 group-hover:border-blue-100 transition-colors relative z-10">
+                                <span class="text-lg sm:text-2xl font-bold text-blue-600">01</span>
+                            </div>
+                            <h4 class="font-bold text-slate-900 text-sm sm:text-lg mb-1 sm:mb-2 text-center">Permohonan</h4>
+                            <p class="text-xs sm:text-sm text-slate-500 text-center leading-relaxed">Pengajuan, penawaran harga, & penerbitan SPK/PO.</p>
+                        </div>
+
+                        <!-- Step 02 -->
+                        <div class="group relative bg-white p-4 sm:p-6 rounded-2xl shadow-sm border border-slate-100 hover:shadow-lg transition-all duration-300 flex flex-col items-center">
+                            <div class="w-16 sm:w-20 h-16 sm:h-20 bg-white border-4 border-blue-50 rounded-full flex items-center justify-center mb-3 sm:mb-6 group-hover:border-blue-100 transition-colors relative z-10">
+                                <span class="text-lg sm:text-2xl font-bold text-blue-600">02</span>
+                            </div>
+                            <h4 class="font-bold text-slate-900 text-sm sm:text-lg mb-1 sm:mb-2 text-center">Jadwal</h4>
+                            <p class="text-xs sm:text-sm text-slate-500 text-center leading-relaxed">Penentuan waktu dan lokasi pemeriksaan teknis.</p>
+                        </div>
+
+                        <!-- Step 03 (Active) -->
+                        <div class="group relative bg-blue-600 p-4 sm:p-6 rounded-2xl shadow-xl shadow-blue-600/20 border border-blue-500 transition-all duration-300 transform scale-100 sm:scale-105 flex flex-col items-center hover:scale-110">
+                            <div class="w-16 sm:w-20 h-16 sm:h-20 bg-blue-700 border-4 border-blue-500 rounded-full flex items-center justify-center mb-3 sm:mb-6 relative z-10">
+                                <i data-lucide="settings" class="w-6 h-6 sm:w-8 sm:h-8 text-white animate-spin-slow"></i>
+                            </div>
+                            <h4 class="font-bold text-white text-sm sm:text-lg mb-1 sm:mb-2 text-center">Pelaksanaan</h4>
+                            <p class="text-xs sm:text-sm text-blue-100 text-center leading-relaxed">Inspeksi lapangan & penyusunan berita acara.</p>
+                        </div>
+
+                        <!-- Step 04 -->
+                        <div class="group relative bg-white p-4 sm:p-6 rounded-2xl shadow-sm border border-slate-100 hover:shadow-lg transition-all duration-300 flex flex-col items-center">
+                            <div class="w-16 sm:w-20 h-16 sm:h-20 bg-white border-4 border-blue-50 rounded-full flex items-center justify-center mb-3 sm:mb-6 group-hover:border-blue-100 transition-colors relative z-10">
+                                <span class="text-lg sm:text-2xl font-bold text-blue-600">04</span>
+                            </div>
+                            <h4 class="font-bold text-slate-900 text-sm sm:text-lg mb-1 sm:mb-2 text-center">Pelaporan</h4>
+                            <p class="text-xs sm:text-sm text-slate-500 text-center leading-relaxed">Penyusunan laporan & pengurusan surat keterangan.</p>
+                        </div>
+
+                        <!-- Step 05 -->
+                        <div class="group relative bg-white p-4 sm:p-6 rounded-2xl shadow-sm border border-slate-100 hover:shadow-lg transition-all duration-300 flex flex-col items-center">
+                            <div class="w-16 sm:w-20 h-16 sm:h-20 bg-white border-4 border-blue-50 rounded-full flex items-center justify-center mb-3 sm:mb-6 group-hover:border-blue-100 transition-colors relative z-10">
+                                <span class="text-lg sm:text-2xl font-bold text-green-600">05</span>
+                            </div>
+                            <h4 class="font-bold text-slate-900 text-sm sm:text-lg mb-1 sm:mb-2 text-center">Selesai</h4>
+                            <p class="text-xs sm:text-sm text-slate-500 text-center leading-relaxed">Invoice, pembayaran, & penyerahan dokumen.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Timeline Info -->
+                <div class="mt-10 sm:mt-16 text-center">
+                    <div class="inline-flex items-center gap-2 sm:gap-3 px-4 sm:px-5 py-2 sm:py-3 bg-blue-50/50 border border-blue-100 rounded-full text-blue-900 text-xs sm:text-sm font-medium">
+                        <i data-lucide="clock" class="w-4 h-4 text-blue-600"></i>
+                        <span>Estimasi sertifikat terbit ±30 hari setelah pengujian</span>
+                    </div>
+                    <div class="flex justify-center mt-6 sm:mt-8">
+                        <a href="pdf/NEW 2026 COMPANY PROFILE ASTI .pdf" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-5 sm:px-6 py-2.5 sm:py-3 bg-slate-900 text-white rounded-full hover:bg-slate-800 transition-all font-medium text-xs sm:text-sm shadow-lg hover:shadow-xl hover:-translate-y-0.5">
+                            <i data-lucide="file-text" class="w-4 h-4"></i>
+                            Download Company Brochure
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-16 sm:py-24 bg-white relative overflow-hidden" role="region" aria-label="Contact section">
+            <div class="absolute top-0 left-0 w-96 h-96 bg-orange-100 rounded-full blur-3xl opacity-20 -translate-x-1/2 -translate-y-1/2 pointer-events-none"></div>
+            <div class="absolute bottom-0 right-0 w-96 h-96 bg-blue-100 rounded-full blur-3xl opacity-20 translate-x-1/2 translate-y-1/2 pointer-events-none"></div>
+            
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="grid lg:grid-cols-2 gap-8 lg:gap-16">
+                    <!-- Contact Info -->
+                    <div>
+                        <div class="flex items-center gap-2 mb-3 sm:mb-4">
+                            <span class="h-px w-8 bg-orange-500"></span>
+                            <span class="text-xs sm:text-sm font-bold text-orange-600 uppercase tracking-widest">Hubungi Kami</span>
+                        </div>
+                        <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-slate-900 mb-4 sm:mb-6 leading-tight">Siap Membantu <br> Kebutuhan K3 Anda</h2>
+                        <p class="text-slate-600 mb-8 sm:mb-12 leading-relaxed text-sm sm:text-base">
+                            Hubungi tim kami untuk konsultasi gratis mengenai layanan inspeksi dan sertifikasi K3. Kami siap melayani dengan profesional dan responsif.
+                        </p>
+
+                        <!-- Contact Cards -->
+                        <div class="space-y-4 sm:space-y-6">
+                            <!-- Address -->
+                            <div class="flex items-start gap-3 sm:gap-4 p-3 sm:p-4 rounded-xl bg-slate-50 hover:bg-slate-100 transition-colors">
+                                <div class="w-10 sm:w-12 h-10 sm:h-12 rounded-lg bg-orange-100 text-orange-600 flex items-center justify-center flex-shrink-0 mt-0.5">
+                                    <i data-lucide="map-pin" class="w-5 h-5 sm:w-6 sm:h-6"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-slate-900 mb-0.5 sm:mb-1 text-sm sm:text-base">Alamat</h4>
+                                    <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                                        Jl. PM. Noor Perum.Grand Tsamara No 16, RT. 50 Kel. Sempaja Timur, Kec. Samarinda Utara, Kota Samarinda 75119, Kalimantan Timur
+                                    </p>
+                                </div>
+                            </div>
+
+                            <!-- Phone -->
+                            <div class="flex items-start gap-3 sm:gap-4 p-3 sm:p-4 rounded-xl bg-slate-50 hover:bg-slate-100 transition-colors">
+                                <div class="w-10 sm:w-12 h-10 sm:h-12 rounded-lg bg-blue-100 text-blue-600 flex items-center justify-center flex-shrink-0 mt-0.5">
+                                    <i data-lucide="phone" class="w-5 h-5 sm:w-6 sm:h-6"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-slate-900 mb-0.5 sm:mb-1 text-sm sm:text-base">Telepon</h4>
+                                    <p class="text-xs sm:text-sm text-slate-600"><a href="tel:+62541123456" class="hover:text-blue-600 transition-colors">(0541) 123-456</a></p>
+                                    <p class="text-xs sm:text-sm text-slate-600"><a href="tel:+62812345678" class="hover:text-blue-600 transition-colors">0812-345-678</a></p>
+                                </div>
+                            </div>
+
+                            <!-- Email -->
+                            <div class="flex items-start gap-3 sm:gap-4 p-3 sm:p-4 rounded-xl bg-slate-50 hover:bg-slate-100 transition-colors">
+                                <div class="w-10 sm:w-12 h-10 sm:h-12 rounded-lg bg-green-100 text-green-600 flex items-center justify-center flex-shrink-0 mt-0.5">
+                                    <i data-lucide="mail" class="w-5 h-5 sm:w-6 sm:h-6"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-slate-900 mb-0.5 sm:mb-1 text-sm sm:text-base">Email</h4>
+                                    <p class="text-xs sm:text-sm text-slate-600"><a href="mailto:angkasatrikaryaindonesia@gmail.com" class="hover:text-green-600 transition-colors">angkasatrikaryaindonesia@gmail.com</a></p>
+                                </div>
+                            </div>
+
+                            <!-- Hours -->
+                            <div class="flex items-start gap-3 sm:gap-4 p-3 sm:p-4 rounded-xl bg-slate-50 hover:bg-slate-100 transition-colors">
+                                <div class="w-10 sm:w-12 h-10 sm:h-12 rounded-lg bg-red-100 text-red-600 flex items-center justify-center flex-shrink-0 mt-0.5">
+                                    <i data-lucide="clock" class="w-5 h-5 sm:w-6 sm:h-6"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-slate-900 mb-0.5 sm:mb-1 text-sm sm:text-base">Jam Operasional</h4>
+                                    <p class="text-xs sm:text-sm text-slate-600">Senin - Jumat: 08:00 - 17:00 WITA</p>
+                                    <p class="text-xs sm:text-sm text-slate-600">Sabtu - Minggu: Tutup</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Contact Buttons -->
+                        <div class="mt-6 sm:mt-8 flex flex-col sm:flex-row gap-3 sm:gap-4">
+                            <a href="https://wa.me/628123456789" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 px-5 sm:px-6 py-2.5 sm:py-3 bg-green-500 hover:bg-green-600 text-white rounded-lg font-medium transition-all shadow-lg hover:shadow-xl text-xs sm:text-sm">
+                                <i data-lucide="message-circle" class="w-4 h-4 sm:w-5 sm:h-5"></i>
+                                WhatsApp
+                            </a>
+                            <a href="tel:+62541123456" class="inline-flex items-center justify-center gap-2 px-5 sm:px-6 py-2.5 sm:py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-medium transition-all shadow-lg hover:shadow-xl text-xs sm:text-sm">
+                                <i data-lucide="phone" class="w-4 h-4 sm:w-5 sm:h-5"></i>
+                                Telepon
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Contact Form -->
+                    <div>
+                        <div class="bg-white border border-slate-200 rounded-2xl p-6 sm:p-8 shadow-lg">
+                            <h3 class="text-xl sm:text-2xl font-bold text-slate-900 mb-4 sm:mb-6">Kirim Pesan</h3>
+                            <form id="contact-form" class="space-y-4 sm:space-y-6">
+                                <div>
+                                    <label for="name" class="block text-xs sm:text-sm font-medium text-slate-700 mb-1.5 sm:mb-2">Nama Lengkap</label>
+                                    <input type="text" id="name" name="name" required class="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg border border-slate-300 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/10 transition-all text-sm" placeholder="Nama Anda">
+                                </div>
+
+                                <div>
+                                    <label for="email" class="block text-xs sm:text-sm font-medium text-slate-700 mb-1.5 sm:mb-2">Email</label>
+                                    <input type="email" id="email" name="email" required class="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg border border-slate-300 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/10 transition-all text-sm" placeholder="email@contoh.com">
+                                </div>
+
+                                <div>
+                                    <label for="phone" class="block text-xs sm:text-sm font-medium text-slate-700 mb-1.5 sm:mb-2">Nomor Telepon</label>
+                                    <input type="tel" id="phone" name="phone" required class="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg border border-slate-300 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/10 transition-all text-sm" placeholder="081234567890">
+                                </div>
+
+                                <div>
+                                    <label for="subject" class="block text-xs sm:text-sm font-medium text-slate-700 mb-1.5 sm:mb-2">Subjek</label>
+                                    <select id="subject" name="subject" required class="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg border border-slate-300 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/10 transition-all text-sm">
+                                        <option value="">Pilih Layanan</option>
+                                        <option value="pesawat-angkat">Pesawat Angkat & Pesawat Angkut</option>
+                                        <option value="bejana-tekan">Pesawat Uap & Bejana Tekan</option>
+                                        <option value="listrik">Instalasi Listrik & Petir</option>
+                                        <option value="elevator">Elevator & Eskalator</option>
+                                        <option value="kebakaran">Proteksi Kebakaran</option>
+                                        <option value="lainnya">Lainnya</option>
+                                    </select>
+                                </div>
+
+                                <div>
+                                    <label for="message" class="block text-xs sm:text-sm font-medium text-slate-700 mb-1.5 sm:mb-2">Pesan</label>
+                                    <textarea id="message" name="message" required rows="4" class="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg border border-slate-300 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/10 transition-all resize-none text-sm" placeholder="Tuliskan pesan atau pertanyaan Anda di sini..."></textarea>
+                                </div>
+
+                                <button type="submit" class="w-full px-5 sm:px-6 py-2.5 sm:py-3 bg-slate-900 hover:bg-slate-800 text-white font-semibold rounded-lg transition-all shadow-lg hover:shadow-xl flex items-center justify-center gap-2 text-sm">
+                                    <span>Kirim Pesan</span>
+                                    <i data-lucide="send" class="w-4 h-4"></i>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Service Modal -->
+    <div id="service-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4">
+        <div id="modal-backdrop" class="absolute inset-0 bg-slate-900/50 backdrop-blur-sm opacity-0 transition-opacity duration-300"></div>
+        
+        <div id="modal-content" class="relative bg-white rounded-2xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto transform scale-95 opacity-0 transition-all duration-300 custom-scrollbar">
+            <div class="sticky top-0 bg-gradient-to-r from-blue-600 to-orange-600 text-white p-4 sm:p-6 flex items-center justify-between z-10">
+                <div class="flex items-center gap-3 sm:gap-4 flex-1">
+                    <div id="modal-icon" class="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-white/20 flex items-center justify-center flex-shrink-0">
+                        <i data-lucide="info" class="w-5 h-5 sm:w-6 sm:h-6"></i>
+                    </div>
+                    <h2 id="modal-title" class="text-lg sm:text-2xl font-bold">Service Title</h2>
+                </div>
+                <button id="modal-close" class="p-2 hover:bg-white/20 rounded-lg transition-colors flex-shrink-0">
+                    <i data-lucide="x" class="w-5 h-5 sm:w-6 sm:h-6"></i>
+                </button>
+            </div>
+
+            <div class="p-6 sm:p-8 space-y-4 sm:space-y-6">
+                <div>
+                    <h3 class="text-base sm:text-lg font-bold text-slate-900 mb-2 sm:mb-3">Deskripsi</h3>
+                    <p id="modal-desc" class="text-slate-600 leading-relaxed text-sm sm:text-base">Service description will appear here</p>
+                </div>
+
+                <div>
+                    <h3 class="text-base sm:text-lg font-bold text-slate-900 mb-2 sm:mb-3">Cakupan Layanan</h3>
+                    <p id="modal-detail" class="text-slate-600 leading-relaxed whitespace-pre-line text-sm sm:text-base">Service details will appear here</p>
+                </div>
+
+                <div class="pt-4 border-t border-slate-200">
+                    <p class="text-xs sm:text-sm text-slate-500 mb-3 sm:mb-4">Tertarik dengan layanan ini? Hubungi kami untuk penawaran dan jadwal inspeksi.</p>
+                    <div class="flex flex-col sm:flex-row gap-2 sm:gap-3">
+                        <a href="#contact" class="flex-1 px-4 py-2 sm:py-3 bg-slate-900 hover:bg-slate-800 text-white font-semibold rounded-lg text-center transition-all text-xs sm:text-sm">
+                            Ajukan Sekarang
+                        </a>
+                        <button type="button" onclick="closeServiceModal()" class="flex-1 px-4 py-2 sm:py-3 bg-slate-100 hover:bg-slate-200 text-slate-900 font-semibold rounded-lg transition-all text-xs sm:text-sm">
+                            Tutup
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-300 py-12 sm:py-16" role="contentinfo">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-12 mb-8 sm:mb-12">
+                <!-- About -->
+                <div>
+                    <div class="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-6">
+                        <div class="bg-gradient-to-br from-slate-800 to-slate-700 text-white p-2 rounded-lg">
+                            <span class="font-bold text-xs sm:text-sm">ASTI</span>
+                        </div>
+                        <div>
+                            <p class="font-bold text-white text-xs sm:text-sm leading-tight">PT. ANGKASA TRIKARYA</p>
+                            <p class="text-xs text-slate-400">Inspeksi Teknik K3</p>
+                        </div>
+                    </div>
+                    <p class="text-xs sm:text-sm leading-relaxed text-slate-400">
+                        PJK3 profesional kami siap memberikan layanan inspeksi dan sertifikasi K3 berkualitas tinggi untuk berbagai sektor industri di seluruh Indonesia.
+                    </p>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h4 class="font-bold text-white mb-3 sm:mb-4 text-sm">Menu Cepat</h4>
+                    <ul class="space-y-2 sm:space-y-3 text-xs sm:text-sm">
+                        <li><a href="#home" class="text-slate-400 hover:text-white transition-colors">Home</a></li>
+                        <li><a href="#about" class="text-slate-400 hover:text-white transition-colors">Tentang Kami</a></li>
+                        <li><a href="#services" class="text-slate-400 hover:text-white transition-colors">Layanan</a></li>
+                        <li><a href="#flow" class="text-slate-400 hover:text-white transition-colors">Alur Kerja</a></li>
+                        <li><a href="#contact" class="text-slate-400 hover:text-white transition-colors">Hubungi Kami</a></li>
+                    </ul>
+                </div>
+
+                <!-- Services -->
+                <div>
+                    <h4 class="font-bold text-white mb-3 sm:mb-4 text-sm">Layanan</h4>
+                    <ul class="space-y-2 sm:space-y-3 text-xs sm:text-sm">
+                        <li><a href="#services" class="text-slate-400 hover:text-white transition-colors">Pesawat Angkat dan Pesawat Angkut</a></li>
+                        <li><a href="#services" class="text-slate-400 hover:text-white transition-colors">Elevator dan Eskalator</a></li>
+                        <li><a href="#services" class="text-slate-400 hover:text-white transition-colors">PUBT</a></li>
+                        <li><a href="#services" class="text-slate-400 hover:text-white transition-colors">K3 Listrik</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact Info -->
+                <div>
+                    <h4 class="font-bold text-white mb-3 sm:mb-4 text-sm">Hubungi Kami</h4>
+                    <ul class="space-y-2 sm:space-y-3 text-xs sm:text-sm">
+                        <li>
+                            <p class="text-slate-500 text-xs uppercase tracking-wide mb-1">Telepon</p>
+                            <a href="tel:+62541123456" class="text-slate-300 hover:text-white transition-colors">(0541) 123-456</a>
+                        </li>
+                        <li>
+                            <p class="text-slate-500 text-xs uppercase tracking-wide mb-1">Email</p>
+                            <a href="mailto:info@asti.co.id" class="text-slate-300 hover:text-white transition-colors">info@asti.co.id</a>
+                        </li>
+                        <li>
+                            <p class="text-slate-500 text-xs uppercase tracking-wide mb-1">Alamat</p>
+                            <p class="text-slate-300">Samarinda, Kalimantan Timur</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Divider -->
+            <!--<div class="border-t border-slate-800 pt-6 sm:pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <p class="text-xs sm:text-sm text-slate-500 text-center sm:text-left">
+                    &copy; 2026 PT. Angkasa Trikarya Indonesia. Semua hak cipta dilindungi.
+                </p>
+                 <div class="flex items-center gap-3">
+                    <a href="https://instagram.com/angkasatrikarya" target="_blank" aria-label="Instagram" class="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-slate-800 hover:bg-gradient-to-r hover:from-pink-500 hover:to-purple-600 flex items-center justify-center transition-all duration-300 transform hover:scale-110">
+                        <i data-lucide="instagram" class="w-4 sm:w-5 h-4 sm:h-5"></i>
+                    </a>
+                    <a href="https://linkedin.com" target="_blank" aria-label="LinkedIn" class="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-slate-800 hover:bg-blue-600 flex items-center justify-center transition-all duration-300 transform hover:scale-110">
+                        <i data-lucide="linkedin" class="w-4 sm:w-5 h-4 sm:h-5"></i>
+                    </a>
+                    <a href="https://wa.me/628123456789" target="_blank" aria-label="WhatsApp" class="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-slate-800 hover:bg-green-600 flex items-center justify-center transition-all duration-300 transform hover:scale-110">
+                        <i data-lucide="message-circle" class="w-4 sm:w-5 h-4 sm:h-5"></i>
+                    </a>
+                </div>
+            </div>-->
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script type="module" src="script.js"></script>
+</body>
+</html>
