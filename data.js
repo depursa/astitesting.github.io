@@ -1,49 +1,75 @@
-export const stats = [
-    { value: "116", label: "Lebih dari Perusahaan Klien" },
-    { value: "923", label: "Lebih dari Sertifikat Terbit" },
-    { value: 3, label: "Tahun Pengalaman" },
-    { value: 5, label: "Ahli K3 Bersertifikat" }
+// File: data.js - Data configuration
+const stats = [
+    { value: "500+", label: "Alat Terinspeksi" },
+    { value: "50+", label: "Klien Industri" },
+    { value: "100%", label: "Akurasi Sertifikasi" },
+    { value: "24/7", label: "Dukungan Teknis" }
 ];
 
-export const services = [
+const services = [
     {
-        title: "Pesawat Angkat & Angkut (PAA)",
-        desc: "Pemeriksaan berkala dan pengujian beban untuk crane, forklift, excavator, dan alat berat lainnya sesuai Permenaker No. 8 Tahun 2020.",
-        detail: "• Visual Inspection (Structure, Wire Rope, Hook)\n• Load Test (Dynamic & Static)\n• NDT (Non-Destructive Test)\n• Safety Device Check\n• Sertifikat Kelayakan Operasional",
+        id: "papa-paa",
+        title: "PAPA / PAA",
+        desc: "Pesawat Angkat dan Pesawat Angkut. Inspeksi menyeluruh untuk crane, forklift, dan alat berat lainnya.",
+        detail: "Pengujian beban (load test), pemeriksaan visual struktur, dan verifikasi fungsi safety device untuk memastikan kelayakan operasi sesuai Permenaker No. 8 Tahun 2020.",
         icon: "truck",
-        category: "Mekanik",
+        category: "Logistik",
         color: "blue"
     },
     {
-        title: "Pesawat Uap & Bejana Tekan",
-        desc: "Inspeksi keselamatan bejana bertekanan tinggi untuk mencegah ledakan dan kebocoran di area kerja.",
-        detail: "• Hydrostatic Test\n• Thickness Measurement\n• Safety Valve Calibration\n• Visual Internal & External\n• Pressure Test Report",
+        id: "pubt",
+        title: "PUBT",
+        desc: "Pesawat Uap dan Bejana Tekan. Pengujian ketahanan dan keamanan tekanan tinggi.",
+        detail: "Pemeriksaan ketebalan dinding (thickness test), safety valve, dan hydrotest pada boiler, tangki timbun, dan bejana tekan lainnya sesuai standar ASME dan regulasi Depnaker.",
         icon: "flame",
-        category: "PUBT",
+        category: "Industri",
         color: "orange"
     },
     {
+        id: "fire-security",
+        title: "Fire Security",
+        desc: "Inspeksi sistem proteksi kebakaran aktif dan pasif.",
+        detail: "Audit sistem hydrant, sprinkler, fire alarm, dan APAR untuk memastikan kesiapan fasilitas dalam mitigasi risiko kebakaran industri.",
+        icon: "bell",
+        category: "Safety",
+        color: "red"
+    },
+    {
+        id: "elevator",
+        title: "Elevator / Eskalator",
+        desc: "Riksa uji kelayakan sarana transportasi vertikal gedung.",
+        detail: "Pemeriksaan sistem governor, wire rope, buffer, dan interlock pintu pada lift penumpang, lift barang, dan eskalator demi keamanan publik.",
+        icon: "arrow-up-down",
+        category: "Gedung",
+        color: "blue"
+    },
+    {
+        id: "electric",
         title: "Instalasi Listrik & Petir",
-        desc: "Audit keamanan kelistrikan gedung dan pabrik untuk mencegah korsleting dan bahaya kebakaran.",
-        detail: "• Grounding Resistance Test\n• Insulation Resistance Test\n• Thermography Infrared\n• Lightning Protection Radius Check",
+        desc: "Audit keselamatan kelistrikan dan proteksi sambaran petir.",
+        detail: "Pengukuran tahanan isolasi, thermography, dan pemeriksaan sistem penangkal petir (konvensional/elektrostatis) untuk mencegah korsleting dan kerusakan akibat surja.",
         icon: "zap",
         category: "Elektrik",
         color: "yellow"
     },
     {
-        title: "Elevator & Eskalator",
-        desc: "Jaminan keamanan transportasi vertikal untuk gedung bertingkat, mall, dan rumah sakit.",
-        detail: "• Safety Gear Test\n• Governor Speed Check\n• Door Sensor Verification\n• Load Balancing",
-        icon: "arrow-up-down",
-        category: "Mekanik",
+        id: "grounding",
+        title: "Grounding System",
+        desc: "Pengukuran resistansi pembumian untuk stabilitas sistem.",
+        detail: "Verifikasi nilai tahanan grounding di bawah 5 Ohm untuk perlindungan peralatan elektronik sensitif dan keselamatan personal dari tegangan sentuh.",
+        icon: "anchor",
+        category: "Sistem",
         color: "blue"
     },
     {
-        title: "Proteksi Kebakaran",
-        desc: "Verifikasi fungsi sistem pemadam otomatis dan manual untuk kesiapan kondisi darurat.",
-        detail: "• Hydrant Pressure Test\n• Sprinkler Distribution Check\n• Fire Alarm Response Test\n• Smoke Detector Sensitivity",
-        icon: "bell",
-        category: "Safety",
-        color: "red"
+        id: "ptp",
+        title: "PTP",
+        desc: "Pesawat Tenaga dan Produksi. Inspeksi mesin-mesin produksi.",
+        detail: "Pemeriksaan pada genset, turbin, mesin perkakas, dan tanur untuk menjamin efisiensi kinerja dan keamanan operator di lantai produksi.",
+        icon: "settings",
+        category: "Produksi",
+        color: "green"
     }
 ];
+
+export { stats, services };

@@ -7,14 +7,13 @@ import { services, stats } from './data.js';
 document.addEventListener('DOMContentLoaded', () => {
     console.log('🚀 Initializing ASTI Website...');
     
-    lucide.createIcons();
+    if (window.lucide) lucide.createIcons();
     initNavbar();
     initStats();
     initServices();
     initSwiper();
     initGSAP();
     initContactForm();
-    initFooterSocial();
     initMobileOptimization();
     initPerformance();
     
@@ -29,6 +28,8 @@ function initNavbar() {
     const mobileBtn = document.getElementById('mobile-menu-btn');
     const mobileMenu = document.getElementById('mobile-menu');
     const mobileLinks = document.querySelectorAll('.mobile-link');
+
+    if (!navbar || !mobileBtn || !mobileMenu) return;
 
     // Navbar scroll effect
     let lastScrollY = 0;
@@ -47,7 +48,8 @@ function initNavbar() {
     }, { passive: true });
 
     // Mobile menu toggle
-    mobileBtn.addEventListener('click', () => {
+    mobileBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
         const isOpen = mobileMenu.classList.contains('open');
         toggleMenu(!isOpen);
     });
@@ -62,14 +64,24 @@ function initNavbar() {
         if (e.target === mobileMenu) toggleMenu(false);
     });
 
+    // Close menu on escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && mobileMenu.classList.contains('open')) {
+            toggleMenu(false);
+        }
+    });
+
     // Toggle menu function
     function toggleMenu(show) {
+        const btn = mobileBtn.querySelector('i');
         if (show) {
             mobileMenu.classList.remove('hidden');
             mobileMenu.classList.remove('opacity-0', 'pointer-events-none');
+            mobileBtn.setAttribute('aria-expanded', 'true');
             setTimeout(() => mobileMenu.classList.add('open'), 10);
         } else {
             mobileMenu.classList.remove('open');
+            mobileBtn.setAttribute('aria-expanded', 'false');
             setTimeout(() => {
                 mobileMenu.classList.add('hidden');
                 mobileMenu.classList.add('opacity-0', 'pointer-events-none');
@@ -107,85 +119,42 @@ function initServices() {
     const grid = document.getElementById('services-grid');
     if (!grid) return;
 
-    grid.innerHTML = services.map((service, index) => `
-        <div class="group bg-white rounded-2xl p-4 sm:p-6 shadow-sm border border-slate-100 hover:shadow-xl hover:border-blue-100 transition-all duration-300 flex flex-col h-full cursor-pointer service-card" onclick="openServiceModal(${index})">
-            <div class="flex justify-between items-start mb-4 sm:mb-6">
-                <div class="w-10 sm:w-12 h-10 sm:h-12 rounded-xl bg-${service.color}-50 text-${service.color}-600 flex items-center justify-center group-hover:scale-110 transition-transform duration-300 service-icon flex-shrink-0">
-                    <i data-lucide="${service.icon}" class="w-5 h-5 sm:w-6 sm:h-6"></i>
+    const colorMap = {
+        blue: { bg: 'bg-blue-50', text: 'text-blue-600' },
+        orange: { bg: 'bg-orange-50', text: 'text-orange-600' },
+        red: { bg: 'bg-red-50', text: 'text-red-600' },
+        green: { bg: 'bg-green-50', text: 'text-green-600' },
+        yellow: { bg: 'bg-yellow-50', text: 'text-yellow-600' }
+    };
+
+    grid.innerHTML = services.map((service, index) => {
+        const colors = colorMap[service.color] || colorMap.blue;
+        return `
+            <div class="group bg-white rounded-2xl p-4 sm:p-6 shadow-sm border border-slate-100 hover:shadow-xl hover:border-blue-100 transition-all duration-300 flex flex-col h-full cursor-pointer service-card" onclick="openServiceModal(${index})">
+                <div class="flex justify-between items-start mb-4 sm:mb-6">
+                    <div class="w-10 sm:w-12 h-10 sm:h-12 rounded-xl ${colors.bg} ${colors.text} flex items-center justify-center group-hover:scale-110 transition-transform duration-300 service-icon flex-shrink-0">
+                        <i data-lucide="${service.icon}" class="w-5 h-5 sm:w-6 sm:h-6"></i>
+                    </div>
+                    <div class="w-8 h-8 rounded-full bg-slate-50 flex items-center justify-center text-slate-400 group-hover:bg-blue-600 group-hover:text-white transition-colors arrow-icon flex-shrink-0">
+                        <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+                    </div>
                 </div>
-                <div class="w-8 h-8 rounded-full bg-slate-50 flex items-center justify-center text-slate-400 group-hover:bg-blue-600 group-hover:text-white transition-colors arrow-icon flex-shrink-0">
-                    <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+                <h3 class="text-lg sm:text-xl font-bold text-slate-900 mb-2 sm:mb-3 group-hover:text-blue-700 transition-colors">${service.title}</h3>
+                <p class="text-slate-500 text-xs sm:text-sm leading-relaxed mb-3 sm:mb-4 flex-grow line-clamp-3">${service.desc}</p>
+                <div class="text-xs font-semibold ${colors.text} uppercase tracking-wide pt-3 sm:pt-4 border-t border-slate-50">
+                    ${service.category}
                 </div>
             </div>
-            <h3 class="text-lg sm:text-xl font-bold text-slate-900 mb-2 sm:mb-3 group-hover:text-blue-700 transition-colors">${service.title}</h3>
-            <p class="text-slate-500 text-xs sm:text-sm leading-relaxed mb-3 sm:mb-4 flex-grow line-clamp-3">${service.desc}</p>
-            <div class="text-xs font-semibold text-${service.color}-600 uppercase tracking-wide pt-3 sm:pt-4 border-t border-slate-50">
-                ${service.category}
-            </div>
-        </div>
-    `).join('');
+        `;
+    }).join('');
 
-    lucide.createIcons();
+    if (window.lucide) lucide.createIcons();
 
-    // Service card icon animations
+    // Service card interactions
     const serviceCards = grid.querySelectorAll('.service-card');
     serviceCards.forEach((card) => {
-        const serviceIcon = card.querySelector('.service-icon');
-        const arrowIcon = card.querySelector('.arrow-icon');
-        
-        card.addEventListener('mouseenter', () => {
-            if (window.innerWidth >= 768) { // Only animate on desktop
-                gsap.to(serviceIcon, {
-                    y: -5,
-                    duration: 0.3,
-                    ease: "power2.out"
-                });
-
-                gsap.to(arrowIcon, {
-                    rotation: 45,
-                    duration: 0.3,
-                    ease: "power2.out"
-                });
-
-                gsap.to(serviceIcon, {
-                    scale: 1.15,
-                    duration: 0.4,
-                    yoyo: true,
-                    repeat: 1,
-                    delay: 0.1,
-                    ease: "power1.inOut"
-                });
-            }
-        });
-
-        card.addEventListener('mouseleave', () => {
-            gsap.to(serviceIcon, {
-                y: 0,
-                scale: 1,
-                duration: 0.3,
-                ease: "power2.out"
-            });
-
-            gsap.to(arrowIcon, {
-                rotation: 0,
-                duration: 0.3,
-                ease: "power2.out"
-            });
-        });
-
-        // Touch support for mobile
-        card.addEventListener('touchstart', () => {
-            gsap.to(card, {
-                scale: 0.98,
-                duration: 0.2
-            });
-        });
-
-        card.addEventListener('touchend', () => {
-            gsap.to(card, {
-                scale: 1,
-                duration: 0.2
-            });
+        card.addEventListener('click', (e) => {
+            e.stopPropagation();
         });
     });
 }
@@ -194,6 +163,12 @@ function initServices() {
 // SWIPER CAROUSEL INITIALIZATION
 // ================================================
 function initSwiper() {
+    if (typeof Swiper === 'undefined') {
+        console.warn('Swiper not loaded yet');
+        setTimeout(initSwiper, 500);
+        return;
+    }
+
     const swiper = new Swiper('.projects-carousel', {
         slidesPerView: 1,
         spaceBetween: 16,
@@ -209,7 +184,6 @@ function initSwiper() {
             clickable: true,
             dynamicBullets: true,
         },
-        navigation: false,
         speed: 800,
         breakpoints: {
             0: {
@@ -232,61 +206,7 @@ function initSwiper() {
                 slidesPerView: 3,
                 spaceBetween: 24,
             }
-        },
-        on: {
-            slideChange: function() {
-                const activeSlide = document.querySelector('.swiper-slide-active');
-                if (activeSlide) {
-                    gsap.from(activeSlide, {
-                        opacity: 0.5,
-                        duration: 0.5,
-                        ease: "power2.out"
-                    });
-                }
-            }
         }
-    });
-
-    // Carousel slide animations
-    const slides = document.querySelectorAll('.projects-carousel .swiper-slide');
-    slides.forEach((slide) => {
-        const slideIcon = slide.querySelector('.w-10.h-10');
-        
-        slide.addEventListener('mouseenter', () => {
-            if (slideIcon && window.innerWidth >= 768) {
-                gsap.to(slideIcon, {
-                    x: 8,
-                    duration: 0.4,
-                    yoyo: true,
-                    repeat: -1,
-                    repeatDelay: 0.2,
-                    ease: "sine.inOut"
-                });
-            }
-
-            gsap.to(slide, {
-                y: -8,
-                duration: 0.3,
-                ease: "power2.out"
-            });
-        });
-
-        slide.addEventListener('mouseleave', () => {
-            if (slideIcon) {
-                gsap.killTweensOf(slideIcon);
-                gsap.to(slideIcon, {
-                    x: 0,
-                    duration: 0.3,
-                    ease: "power2.out"
-                });
-            }
-
-            gsap.to(slide, {
-                y: 0,
-                duration: 0.3,
-                ease: "power2.out"
-            });
-        });
     });
 }
 
@@ -294,6 +214,11 @@ function initSwiper() {
 // GSAP ANIMATIONS (Scroll Triggers & Effects)
 // ================================================
 function initGSAP() {
+    if (typeof gsap === 'undefined') {
+        console.warn('GSAP not loaded');
+        return;
+    }
+
     gsap.registerPlugin(ScrollTrigger);
 
     // Check if device is mobile
@@ -318,25 +243,15 @@ function initGSAP() {
         ease: "power3.out"
     });
 
-    // Hero buttons animation
-    gsap.from('.animate-fade-up', {
-        opacity: 0,
-        y: 20,
-        duration: 0.8,
-        delay: 0.6,
-        ease: "power2.out",
-        stagger: 0.1
-    });
-
     // ===== Counter Animations =====
     ScrollTrigger.batch(".counter", {
         onEnter: batch => {
             batch.forEach(el => {
-                const target = parseInt(el.getAttribute('data-target'));
+                const target = parseInt(el.getAttribute('data-target').replace(/[^0-9]/g, ''));
                 gsap.to(el, {
-                    innerHTML: target,
+                    innerText: target,
                     duration: 2.5,
-                    snap: { innerHTML: 1 },
+                    snap: { innerText: 1 },
                     ease: "power1.out"
                 });
             });
@@ -379,62 +294,6 @@ function initGSAP() {
             delay: index * 0.08,
             ease: "back.out"
         });
-
-        // Flow step hover effect
-        if (!isMobile) {
-            el.addEventListener('mouseenter', () => {
-                gsap.to(el, { 
-                    y: -12, 
-                    duration: 0.3,
-                    boxShadow: '0 25px 30px rgba(0,0,0,0.2)',
-                    ease: "power2.out"
-                });
-            });
-
-            el.addEventListener('mouseleave', () => {
-                gsap.to(el, { 
-                    y: 0, 
-                    duration: 0.3,
-                    boxShadow: '0 1px 3px rgba(0,0,0,0.1)',
-                    ease: "power2.out"
-                });
-            });
-        }
-    });
-
-    // ===== Contact Section Animations =====
-    const contactElements = document.querySelectorAll('#contact input, #contact select, #contact textarea');
-    contactElements.forEach((el, index) => {
-        gsap.from(el, {
-            scrollTrigger: {
-                trigger: '#contact',
-                start: "top 85%",
-                toggleActions: "play none none none",
-                once: true
-            },
-            opacity: 0,
-            y: 25,
-            duration: isMobile ? 0.4 : 0.6,
-            delay: index * 0.05,
-            ease: "back.out"
-        });
-
-        // Input focus animation
-        el.addEventListener('focus', () => {
-            gsap.to(el, {
-                boxShadow: '0 0 0 3px rgba(59, 130, 246, 0.1)',
-                duration: 0.3,
-                ease: "power2.out"
-            });
-        });
-
-        el.addEventListener('blur', () => {
-            gsap.to(el, {
-                boxShadow: '0 0 0 0px rgba(59, 130, 246, 0)',
-                duration: 0.3,
-                ease: "power2.out"
-            });
-        });
     });
 
     // ===== About Section Image Animation =====
@@ -452,21 +311,6 @@ function initGSAP() {
             ease: "power2.out"
         });
     }
-
-    // ===== Section Headers Animation =====
-    document.querySelectorAll('section h2').forEach((heading, index) => {
-        gsap.from(heading, {
-            scrollTrigger: {
-                trigger: heading,
-                start: "top 80%",
-                once: true
-            },
-            opacity: 0,
-            y: 30,
-            duration: isMobile ? 0.4 : 0.6,
-            ease: "power2.out"
-        });
-    });
 }
 
 // ================================================
@@ -475,8 +319,6 @@ function initGSAP() {
 window.openServiceModal = (index) => {
     const service = services[index];
     const modal = document.getElementById('service-modal');
-    const backdrop = document.getElementById('modal-backdrop');
-    const content = document.getElementById('modal-content');
 
     if (!modal) return;
 
@@ -488,7 +330,7 @@ window.openServiceModal = (index) => {
     // Set modal icon
     const iconContainer = document.getElementById('modal-icon');
     iconContainer.innerHTML = `<i data-lucide="${service.icon}" class="w-7 h-7 text-white"></i>`;
-    lucide.createIcons();
+    if (window.lucide) lucide.createIcons();
 
     // Show modal
     modal.classList.remove('hidden');
@@ -496,38 +338,22 @@ window.openServiceModal = (index) => {
 
     // Animate modal entrance
     requestAnimationFrame(() => {
-        gsap.to(backdrop, {
-            opacity: 1,
-            duration: 0.3,
-            ease: "power2.out"
-        });
+        const backdrop = document.getElementById('modal-backdrop');
+        const content = document.getElementById('modal-content');
+        
+        if (typeof gsap !== 'undefined') {
+            gsap.to(backdrop, {
+                opacity: 1,
+                duration: 0.3,
+                ease: "power2.out"
+            });
 
-        gsap.to(content, {
-            scale: 1,
-            opacity: 1,
-            duration: 0.4,
-            ease: "back.out"
-        });
-    });
-
-    // Trap focus for accessibility
-    const focusableElements = modal.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
-    const firstElement = focusableElements[0];
-    const lastElement = focusableElements[focusableElements.length - 1];
-
-    modal.addEventListener('keydown', (e) => {
-        if (e.key !== 'Tab') return;
-
-        if (e.shiftKey) {
-            if (document.activeElement === firstElement) {
-                lastElement.focus();
-                e.preventDefault();
-            }
-        } else {
-            if (document.activeElement === lastElement) {
-                firstElement.focus();
-                e.preventDefault();
-            }
+            gsap.to(content, {
+                scale: 1,
+                opacity: 1,
+                duration: 0.4,
+                ease: "back.out"
+            });
         }
     });
 };
@@ -539,18 +365,20 @@ window.closeServiceModal = () => {
     const backdrop = document.getElementById('modal-backdrop');
     const content = document.getElementById('modal-content');
 
-    gsap.to(backdrop, {
-        opacity: 0,
-        duration: 0.3,
-        ease: "power2.in"
-    });
+    if (typeof gsap !== 'undefined') {
+        gsap.to(backdrop, {
+            opacity: 0,
+            duration: 0.3,
+            ease: "power2.in"
+        });
 
-    gsap.to(content, {
-        scale: 0.95,
-        opacity: 0,
-        duration: 0.3,
-        ease: "back.in"
-    });
+        gsap.to(content, {
+            scale: 0.95,
+            opacity: 0,
+            duration: 0.3,
+            ease: "back.in"
+        });
+    }
 
     setTimeout(() => {
         modal.classList.add('hidden');
@@ -574,7 +402,7 @@ if (modalClose) {
 }
 
 document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && !document.getElementById('service-modal').classList.contains('hidden')) {
+    if (e.key === 'Escape' && serviceModal && !serviceModal.classList.contains('hidden')) {
         closeServiceModal();
     }
 });
@@ -592,26 +420,16 @@ function initContactForm() {
         const originalText = btn.innerHTML;
 
         // Show loading state
-        btn.innerHTML = `<i data-lucide="loader-2" class="w-5 h-5 animate-spin inline"></i> Mengirim...`;
+        btn.innerHTML = `<span>Mengirim...</span>`;
         btn.disabled = true;
-
-        gsap.to(btn, {
-            scale: 0.95,
-            duration: 0.2
-        });
 
         // Simulate form submission
         setTimeout(() => {
             // Show success state
-            btn.innerHTML = `<i data-lucide="check" class="w-5 h-5"></i> Terkirim!`;
+            btn.innerHTML = `<span>✓ Terkirim!</span>`;
             btn.classList.remove('bg-slate-900');
             btn.classList.add('bg-green-600');
             
-            gsap.to(btn, {
-                scale: 1,
-                duration: 0.2
-            });
-
             form.reset();
 
             // Reset button after 3 seconds
@@ -620,80 +438,8 @@ function initContactForm() {
                 btn.classList.add('bg-slate-900');
                 btn.classList.remove('bg-green-600');
                 btn.disabled = false;
-                lucide.createIcons();
-
-                gsap.to(btn, {
-                    scale: 1,
-                    duration: 0.2
-                });
             }, 3000);
         }, 1500);
-    });
-}
-
-// ================================================
-// FOOTER SOCIAL ICONS ANIMATION
-// ================================================
-function initFooterSocial() {
-    const socialLinks = document.querySelectorAll('footer .flex.items-center.gap-4 a');
-    
-    socialLinks.forEach((link, index) => {
-        // Add stagger animation on page load
-        gsap.from(link, {
-            opacity: 0,
-            y: 20,
-            duration: 0.5,
-            delay: 0.2 + (index * 0.1),
-            ease: "back.out"
-        });
-
-        const isMobile = window.innerWidth < 768;
-
-        // Hover animations (desktop only)
-        if (!isMobile) {
-            link.addEventListener('mouseenter', function() {
-                gsap.to(this, {
-                    scale: 1.25,
-                    duration: 0.3,
-                    ease: 'back.out'
-                });
-
-                gsap.to(this.querySelector('i'), {
-                    rotation: 360,
-                    duration: 0.5,
-                    ease: 'power2.out'
-                });
-            });
-
-            link.addEventListener('mouseleave', function() {
-                gsap.to(this, {
-                    scale: 1,
-                    duration: 0.3,
-                    ease: 'back.in'
-                });
-
-                gsap.to(this.querySelector('i'), {
-                    rotation: 0,
-                    duration: 0.3,
-                    ease: 'power2.in'
-                });
-            });
-        }
-
-        // Touch support for mobile
-        link.addEventListener('touchstart', function() {
-            gsap.to(this, {
-                scale: 1.15,
-                duration: 0.2
-            });
-        });
-
-        link.addEventListener('touchend', function() {
-            gsap.to(this, {
-                scale: 1,
-                duration: 0.2
-            });
-        });
     });
 }
 
@@ -702,23 +448,6 @@ function initFooterSocial() {
 // ================================================
 function initMobileOptimization() {
     const isMobile = window.innerWidth < 768;
-    const isTablet = window.innerWidth < 1024;
-
-    if (isMobile) {
-        // Reduce animation complexity on mobile
-        gsap.globalTimeline.timeScale(0.9);
-
-        // Disable transform animations for better mobile performance
-        const style = document.createElement('style');
-        style.textContent = `
-            @media (max-width: 640px) {
-                .animate-slow-zoom {
-                    animation: none;
-                }
-            }
-        `;
-        document.head.appendChild(style);
-    }
 
     // Prevent zoom on double-tap
     let lastTouchEnd = 0;
@@ -741,14 +470,17 @@ function initMobileOptimization() {
     let resizeTimer;
     window.addEventListener('resize', () => {
         clearTimeout(resizeTimer);
-        document.body.style.overflow = 'hidden';
         
         resizeTimer = setTimeout(() => {
-            document.body.style.overflow = '';
-            // Reinitialize components if needed
-            lucide.createIcons();
+            if (window.lucide) lucide.createIcons();
         }, 500);
     }, { passive: true });
+
+    // Fix input zoom on iOS
+    const inputs = document.querySelectorAll('input, select, textarea');
+    inputs.forEach(input => {
+        input.style.fontSize = '16px'; // Prevent auto-zoom on iOS
+    });
 }
 
 // ================================================
@@ -771,22 +503,6 @@ function initPerformance() {
 
         images.forEach(img => imageObserver.observe(img));
     }
-
-    // Preload critical resources
-    const link = document.createElement('link');
-    link.rel = 'preload';
-    link.as = 'image';
-    link.href = 'image/Logo.png';
-    document.head.appendChild(link);
-
-    // Debounce scroll events
-    let scrollTimeout;
-    window.addEventListener('scroll', () => {
-        clearTimeout(scrollTimeout);
-        scrollTimeout = setTimeout(() => {
-            // Any heavy scroll calculations here
-        }, 150);
-    }, { passive: true });
 
     // Monitor performance
     if (window.performance && window.performance.timing) {
@@ -816,31 +532,6 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         }
     });
 });
-
-// ================================================
-// ACCESSIBILITY ENHANCEMENTS
-// ================================================
-
-// Skip to main content link
-const skipLink = document.createElement('a');
-skipLink.href = '#content';
-skipLink.textContent = 'Skip to main content';
-skipLink.style.cssText = `
-    position: absolute;
-    top: -40px;
-    left: 0;
-    background: #0f172a;
-    color: #fff;
-    padding: 8px;
-    z-index: 100;
-`;
-skipLink.addEventListener('focus', () => {
-    skipLink.style.top = '0';
-});
-skipLink.addEventListener('blur', () => {
-    skipLink.style.top = '-40px';
-});
-document.body.insertBefore(skipLink, document.body.firstChild);
 
 // Log script loaded
 console.log('✅ Script.js loaded successfully!');
