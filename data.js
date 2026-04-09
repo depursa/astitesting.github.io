@@ -27,7 +27,7 @@ const services = [
     },
     {
         id: "fire-security",
-        title: "Fire Security",
+        title: "Proteksi Kebakaran",
         desc: "Inspeksi sistem proteksi kebakaran aktif dan pasif.",
         detail: "Audit sistem hydrant, sprinkler, fire alarm, dan APAR untuk memastikan kesiapan fasilitas dalam mitigasi risiko kebakaran industri.",
         icon: "bell",
@@ -52,15 +52,15 @@ const services = [
         category: "Elektrik",
         color: "yellow"
     },
-    {
-        id: "grounding",
-        title: "Grounding System",
-        desc: "Pengukuran resistansi pembumian untuk stabilitas sistem.",
-        detail: "Verifikasi nilai tahanan grounding di bawah 5 Ohm untuk perlindungan peralatan elektronik sensitif dan keselamatan personal dari tegangan sentuh.",
-        icon: "anchor",
-        category: "Sistem",
-        color: "blue"
-    },
+    //{
+      //  id: "grounding",
+        //title: "Grounding System",
+        //desc: "Pengukuran resistansi pembumian untuk stabilitas sistem.",
+        //detail: "Verifikasi nilai tahanan grounding di bawah 5 Ohm untuk perlindungan peralatan elektronik sensitif dan keselamatan personal dari tegangan sentuh.",
+        //icon: "anchor",
+        //category: "Sistem",
+        //color: "blue"
+    //},
     {
         id: "ptp",
         title: "PTP",
