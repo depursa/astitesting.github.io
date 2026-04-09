@@ -1,9 +1,9 @@
 // File: data.js - Data configuration
 const stats = [
-    { value: "500+", label: "Alat Terinspeksi" },
-    { value: "50+", label: "Klien Industri" },
-    { value: "100%", label: "Akurasi Sertifikasi" },
-    { value: "24/7", label: "Dukungan Teknis" }
+    { value: "923", label: "Sertifikat Terbit" },
+    { value: "116", label: "Klien Industri" },
+    { value: "3", label: "Tahun Pengalaman" },
+    { value: "5", label: "Ahli K3 Bersertifikat" }
 ];
 
 const services = [
