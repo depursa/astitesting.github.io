@@ -62,58 +62,63 @@
     <a href="#main-content" class="sr-only focus:not-sr-only">Lewati ke konten utama</a>
 
     <!-- Navbar -->
-    <nav class="fixed w-full z-50 transition-all duration-300 bg-white/80 backdrop-blur-lg border-b border-slate-200/50" id="navbar" role="navigation" aria-label="Main Navigation">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-20">
-                <!-- Logo -->
-                <div class="flex-shrink-0 flex items-center gap-3 cursor-pointer" onclick="window.scrollTo(0,0)" role="button" tabindex="0">
-                    <div class="bg-white-to-br from-slate-900 to-slate-800 text-white p-2 rounded-lg shadow-lg shadow-blue-900/20">
-                        <img src="image/Logo.png" onerror="this.style.display='none';this.parentElement.innerHTML='<span class=\'font-bold px-1\'>ASTI</span>'" alt="Logo PT. ASTI" class="w-10 h-10 object-contain">
-                    </div>
-                    <div class="flex flex-col">
-                        <span class="font-bold text-base sm:text-lg leading-tight text-slate-900 tracking-tight">PT. ANGKASA TRIKARYA</span>
-                        <span class="text-[8px] sm:text-[10px] uppercase tracking-wider text-slate-500 font-medium hidden sm:block">Jasa Inspeksi Teknik K3</span>
-                    </div>
+<nav class="fixed w-full z-50 transition-all duration-300 bg-white/80 backdrop-blur-lg border-b border-slate-200/50" id="navbar" role="navigation" aria-label="Main Navigation">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-20">
+            <!-- Logo -->
+            <div class="flex-shrink-0 flex items-center gap-3 cursor-pointer hover:opacity-80 transition-opacity" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" role="button" tabindex="0" onkeypress="if(event.key==='Enter') window.scrollTo({top: 0, behavior: 'smooth'})">
+                <div class="bg-gradient-to-br from-slate-900 to-slate-800 text-white p-2 rounded-lg shadow-lg shadow-blue-900/20">
+                    <img src="image/Logo.png" onerror="this.style.display='none';this.parentElement.innerHTML='<span class=\'font-bold px-2 py-1\'>ASTI</span>'" alt="Logo PT. ASTI" class="w-10 h-10 object-contain">
                 </div>
-                
-                <!-- Desktop Menu -->
-                <div class="hidden lg:flex space-x-1 items-center bg-slate-100/50 p-1 rounded-full border border-slate-200/50">
-                    <a href="#home" class="nav-link px-4 py-2 text-sm font-medium text-slate-600 rounded-full hover:bg-white hover:text-blue-700 hover:shadow-sm transition-all">Home</a>
-                    <a href="#about" class="nav-link px-4 py-2 text-sm font-medium text-slate-600 rounded-full hover:bg-white hover:text-blue-700 hover:shadow-sm transition-all">Tentang</a>
-                    <a href="#services" class="nav-link px-4 py-2 text-sm font-medium text-slate-600 rounded-full hover:bg-white hover:text-blue-700 hover:shadow-sm transition-all">Layanan</a>
-                    <a href="#flow" class="nav-link px-4 py-2 text-sm font-medium text-slate-600 rounded-full hover:bg-white hover:text-blue-700 hover:shadow-sm transition-all">Alur</a>
-                </div>
-
-                <!-- CTA Button Desktop -->
-                <div class="hidden lg:block">
-                    <a href="#contact" class="group bg-slate-900 hover:bg-orange-600 text-white px-5 py-2.5 rounded-lg font-medium transition-all shadow-lg shadow-slate-900/20 hover:shadow-orange-500/30 text-sm flex items-center gap-2">
-                        <span>Hubungi Kami</span>
-                        <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
-                    </a>
-                </div>
-
-                <!-- Mobile Menu Button -->
-                <div class="lg:hidden flex items-center">
-                    <button id="mobile-menu-btn" class="p-2 text-slate-600 hover:text-blue-900 hover:bg-slate-100 rounded-lg transition-colors focus:outline-none" aria-label="Toggle mobile menu" aria-expanded="false">
-                        <i data-lucide="menu" class="w-6 h-6"></i>
-                    </button>
+                <div class="flex flex-col">
+                    <span class="font-bold text-base sm:text-lg leading-tight text-slate-900 tracking-tight">PT. ANGKASA TRIKARYA</span>
+                    <span class="text-[8px] sm:text-[10px] uppercase tracking-wider text-slate-500 font-medium hidden sm:block">Jasa Inspeksi Teknik K3</span>
                 </div>
             </div>
-        </div>
-                
-        <!-- Mobile Menu -->
-        <div id="mobile-menu" class="fixed inset-0 z-40 bg-slate-900/20 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300 lg:hidden">
-            <div class="absolute top-20 left-0 w-full bg-white border-b border-slate-200 shadow-xl transform transition-transform duration-300" id="mobile-menu-content">
-                <div class="px-4 py-6 space-y-2">
-                    <a href="#home" class="mobile-link block px-4 py-3 text-slate-600 hover:bg-slate-50 hover:text-blue-700 rounded-xl font-medium border border-transparent hover:border-slate-100 transition-all">Home</a>
-                    <a href="#about" class="mobile-link block px-4 py-3 text-slate-600 hover:bg-slate-50 hover:text-blue-700 rounded-xl font-medium border border-transparent hover:border-slate-100 transition-all">Tentang Kami</a>
-                    <a href="#services" class="mobile-link block px-4 py-3 text-slate-600 hover:bg-slate-50 hover:text-blue-700 rounded-xl font-medium border border-transparent hover:border-slate-100 transition-all">Layanan</a>
-                    <a href="#flow" class="mobile-link block px-4 py-3 text-slate-600 hover:bg-slate-50 hover:text-blue-700 rounded-xl font-medium border border-transparent hover:border-slate-100 transition-all">Alur Sertifikasi</a>
-                    <a href="#contact" class="mobile-link block px-4 py-3 mt-4 text-center bg-orange-500 text-white rounded-xl font-bold shadow-lg shadow-orange-500/20">Hubungi Kami</a>
-                </div>
+            
+            <!-- Desktop Menu -->
+            <div class="hidden lg:flex space-x-1 items-center bg-slate-100/50 p-1 rounded-full border border-slate-200/50">
+                <a href="#home" class="nav-link px-4 py-2 text-sm font-medium text-slate-600 rounded-full hover:bg-white hover:text-blue-700 hover:shadow-sm transition-all">Home</a>
+                <a href="#about" class="nav-link px-4 py-2 text-sm font-medium text-slate-600 rounded-full hover:bg-white hover:text-blue-700 hover:shadow-sm transition-all">Tentang</a>
+                <a href="#services" class="nav-link px-4 py-2 text-sm font-medium text-slate-600 rounded-full hover:bg-white hover:text-blue-700 hover:shadow-sm transition-all">Layanan</a>
+                <a href="#flow" class="nav-link px-4 py-2 text-sm font-medium text-slate-600 rounded-full hover:bg-white hover:text-blue-700 hover:shadow-sm transition-all">Alur</a>
+            </div>
+
+            <!-- CTA Button Desktop -->
+            <div class="hidden lg:block">
+                <a href="#contact" class="group bg-slate-900 hover:bg-orange-600 text-white px-5 py-2.5 rounded-lg font-medium transition-all shadow-lg shadow-slate-900/20 hover:shadow-orange-500/30 text-sm flex items-center gap-2">
+                    <span>Hubungi Kami</span>
+                    <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+                </a>
+            </div>
+
+            <!-- Mobile Menu Button - DIPERBAIKI -->
+            <div class="lg:hidden flex items-center gap-2">
+                <button id="mobile-menu-btn" class="p-2.5 text-slate-600 hover:text-slate-900 hover:bg-slate-100 rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 active:scale-95" aria-label="Toggle mobile menu" aria-expanded="false" type="button">
+                    <svg id="menu-icon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                    <svg id="close-icon" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
             </div>
         </div>
-    </nav>
+    </div>
+            
+    <!-- Mobile Menu - DIPERBAIKI -->
+    <div id="mobile-menu" class="hidden fixed inset-0 z-40 bg-slate-900/20 backdrop-blur-sm lg:hidden" style="top: 80px;">
+        <div class="absolute top-0 left-0 w-full bg-white border-b border-slate-200 shadow-xl max-h-[calc(100vh-80px)] overflow-y-auto" id="mobile-menu-content">
+            <div class="px-4 py-4 space-y-2">
+                <a href="#home" class="mobile-link block px-4 py-3 text-slate-600 hover:bg-slate-50 hover:text-blue-700 rounded-xl font-medium border border-transparent hover:border-slate-100 transition-all active:scale-95">Home</a>
+                <a href="#about" class="mobile-link block px-4 py-3 text-slate-600 hover:bg-slate-50 hover:text-blue-700 rounded-xl font-medium border border-transparent hover:border-slate-100 transition-all active:scale-95">Tentang Kami</a>
+                <a href="#services" class="mobile-link block px-4 py-3 text-slate-600 hover:bg-slate-50 hover:text-blue-700 rounded-xl font-medium border border-transparent hover:border-slate-100 transition-all active:scale-95">Layanan</a>
+                <a href="#flow" class="mobile-link block px-4 py-3 text-slate-600 hover:bg-slate-50 hover:text-blue-700 rounded-xl font-medium border border-transparent hover:border-slate-100 transition-all active:scale-95">Alur Sertifikasi</a>
+                <a href="#contact" class="mobile-link block px-4 py-3 mt-2 text-center bg-orange-500 hover:bg-orange-600 text-white rounded-xl font-bold shadow-lg shadow-orange-500/20 transition-all active:scale-95">Hubungi Kami</a>
+            </div>
+        </div>
+    </div>
+</nav>
 
     <!-- Main Content -->
     <main id="main-content">
@@ -407,7 +412,7 @@
 
                         <!-- Image -->
                         <div class="relative flex items-center justify-center order-first lg:order-last">
-                            <img src="/astiweb/image/jenisapar.png" alt="Peralatan Keselamatan K3" class="rounded-2xl shadow-2xl border-4 border-slate-800 w-full object-cover h-64 sm:h-[400px]" onerror="this.src='https://via.placeholder.com/600x400/0f172a/ffffff?text=Equipment'">
+                            <img src="/astiweb/image/jenisapar.jpg" alt="Peralatan Keselamatan K3" class="rounded-2xl shadow-2xl border-4 border-slate-800 w-full object-cover h-64 sm:h-[400px]" onerror="this.src='https://via.placeholder.com/600x400/0f172a/ffffff?text=Equipment'">
                             <!-- Badge -->
                             <div class="absolute bottom-3 sm:bottom-4 left-3 sm:left-4 bg-slate-800/80 backdrop-blur text-slate-100 p-3 sm:p-4 rounded-xl shadow-xl hidden sm:block">
                                 <div class="flex items-center gap-2 sm:gap-3">
