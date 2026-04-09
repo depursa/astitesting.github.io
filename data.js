@@ -52,15 +52,6 @@ const services = [
         category: "Elektrik",
         color: "yellow"
     },
-    //{
-      //  id: "grounding",
-        //title: "Grounding System",
-        //desc: "Pengukuran resistansi pembumian untuk stabilitas sistem.",
-        //detail: "Verifikasi nilai tahanan grounding di bawah 5 Ohm untuk perlindungan peralatan elektronik sensitif dan keselamatan personal dari tegangan sentuh.",
-        //icon: "anchor",
-        //category: "Sistem",
-        //color: "blue"
-    //},
     {
         id: "ptp",
         title: "PTP",
