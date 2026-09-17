@@ -485,36 +485,57 @@ document.addEventListener('keydown', (e) => {
 // ================================================
 // CONTACT FORM FUNCTIONALITY
 // ================================================
+// ================================================
+// CONTACT FORM - WHATSAPP
+// ================================================
 function initContactForm() {
     const form = document.getElementById('contact-form');
-    if(!form) return;
+    if (!form) return;
 
     form.addEventListener('submit', (e) => {
         e.preventDefault();
-        const btn = form.querySelector('button');
-        const originalText = btn.innerHTML;
 
-        // Show loading state
-        btn.innerHTML = `<span>Mengirim...</span>`;
-        btn.disabled = true;
+        // Ambil data dari form
+        const name = document.getElementById('name').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const phone = document.getElementById('phone').value.trim();
+        const subjectSelect = document.getElementById('subject');
+        const subject = subjectSelect.options[subjectSelect.selectedIndex].text;
+        const message = document.getElementById('message').value.trim();
 
-        // Simulate form submission
-        setTimeout(() => {
-            // Show success state
-            btn.innerHTML = `<span>✓ Terkirim!</span>`;
-            btn.classList.remove('bg-slate-900');
-            btn.classList.add('bg-green-600');
-            
-            form.reset();
+        // Nomor WhatsApp Admin
+        const whatsappNumber = '6208135656696';
 
-            // Reset button after 3 seconds
-            setTimeout(() => {
-                btn.innerHTML = originalText;
-                btn.classList.add('bg-slate-900');
-                btn.classList.remove('bg-green-600');
-                btn.disabled = false;
-            }, 3000);
-        }, 1500);
+        // Susun pesan WhatsApp
+        const whatsappMessage =
+`Halo Admin ASTI,
+
+Saya ingin mendapatkan informasi mengenai layanan ASTI.
+
+*Data Pemohon*
+Nama: ${name}
+Email: ${email}
+Nomor Telepon: ${phone}
+
+*Layanan yang Dibutuhkan*
+${subject}
+
+*Pesan*
+${message}
+
+Terima kasih.`;
+
+        // Encode pesan agar aman untuk URL
+        const encodedMessage = encodeURIComponent(whatsappMessage);
+
+        // URL WhatsApp
+        const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+
+        // Buka WhatsApp
+        window.open(whatsappURL, '_blank');
+
+        // Reset form setelah dikirim ke WhatsApp
+        form.reset();
     });
 }
 
