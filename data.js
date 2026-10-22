@@ -1,6 +1,6 @@
 // File: data.js - Data configuration
 const stats = [
-    { value: "1000+", label: "Sertifikat Terbit" },
+    { value: "1500+", label: "Sertifikat Terbit" },
     { value: "100+", label: "Klien Industri" },
     { value: "3", label: "Tahun Pengalaman" },
     { value: "9", label: "Ahli K3 Bersertifikat" }
